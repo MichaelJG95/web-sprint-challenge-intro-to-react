@@ -1,13 +1,25 @@
 // Write your Character component here
+import React, { useState } from "react"
+import styled from "styled-components"
+import Details from "./Details"
 
-const Charachter = ({ character }) => {
+const StyledCharacter = styled.div`
+color: white;
+
+    &:hover {
+        color: red;
+    }
+`
+
+const Character = ({ character }) => {
+    const [showDetails, setShowDetails] = useState(false)
+
     return (
-        <div>
-            <h2>
-                {character.name}
-            </h2>
-        </div>
+        <StyledCharacter>
+            <h2 onClick={() => setShowDetails(!showDetails)}>{character.name}</h2>
+            {showDetails && <Details character={character} />}
+        </StyledCharacter>
     )
 }
 
-export default Charachter
+export default Character

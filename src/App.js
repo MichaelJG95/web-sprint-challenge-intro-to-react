@@ -6,7 +6,7 @@ import Characters from './components/Characters'
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
-  const [showCharacters, setShowCharacters] = useState(false)
+  const [showCharacters, setShowCharacters] = useState(true)
   const [characters, setCharacters] = useState([])
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
@@ -33,8 +33,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="Header">Characters</h1>
-      <Characters characters={characters} />
+      <h1 className="Header" onClick={() => setShowCharacters(!showCharacters)}>Characters</h1>
+      {showCharacters && <Characters characters={characters} />}
     </div>
   );
 }
